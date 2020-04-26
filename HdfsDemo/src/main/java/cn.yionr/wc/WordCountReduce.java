@@ -1,4 +1,4 @@
-package cloud.yionr.wc;
+package cn.yionr.wc;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;

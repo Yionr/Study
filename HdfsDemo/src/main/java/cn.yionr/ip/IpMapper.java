@@ -1,4 +1,4 @@
-package cloud.yionr.ip;
+package cn.yionr.ip;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;

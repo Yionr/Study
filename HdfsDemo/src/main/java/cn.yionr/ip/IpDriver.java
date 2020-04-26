@@ -1,8 +1,5 @@
-package cloud.yionr.ip;
+package cn.yionr.ip;
 
-import cloud.yionr.avg.AvgDriver;
-import cloud.yionr.avg.AvgMapper;
-import cloud.yionr.avg.AvgReduce;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;

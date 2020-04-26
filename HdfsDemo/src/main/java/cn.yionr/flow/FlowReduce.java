@@ -1,12 +1,10 @@
-package cloud.yionr.flow;
+package cn.yionr.flow;
 
 import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.io.PipedWriter;
 
 public class FlowReduce extends Reducer<Text, Flow,Text,IntWritable> {
     @Override

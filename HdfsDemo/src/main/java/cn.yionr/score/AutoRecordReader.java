@@ -1,4 +1,4 @@
-package cloud.yionr.score;
+package cn.yionr.score;
 
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;

@@ -1,4 +1,4 @@
-package cloud.yionr.avg;
+package cn.yionr.avg;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;

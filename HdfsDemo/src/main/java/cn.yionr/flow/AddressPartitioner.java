@@ -1,4 +1,4 @@
-package cloud.yionr.flow;
+package cn.yionr.flow;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;

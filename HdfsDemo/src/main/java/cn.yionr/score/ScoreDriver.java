@@ -1,7 +1,5 @@
-package cloud.yionr.score;
+package cn.yionr.score;
 
-import cloud.yionr.ip.IpMapper;
-import cloud.yionr.ip.IpReduce;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
