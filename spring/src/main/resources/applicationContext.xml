@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bean1" class="cn.yionr.beans.Bean1">
+        <constructor-arg name="child" ref="child"/>
+    </bean>
+    <bean class="cn.yionr.beans.BeanChild" id="child">
+        <property name="x" value="99" />
+    </bean>
+    <bean class="cn.yionr.beans.ComplexBean" id="complexBean" >
+        <property name="bean1s">
+            <list>
+                <bean class="cn.yionr.beans.Bean1"/>
+                <ref bean="bean1" />
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="-1" value-ref="bean1" />
+                <entry key="1">
+                    <bean class="cn.yionr.beans.Bean1">
+                        <constructor-arg name="child">
+                            <bean class="cn.yionr.beans.BeanChild"/>
+                        </constructor-arg>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="userName">root</prop>
+                <prop key="passwd">123456</prop>
+            </props>
+        </property>
+        <property name="arr" value="1,2,3"/>
+    </bean>
+
+    <bean class="cn.yionr.beans.Bean1" id="bean12" >
+        <property name="child" ref="child" />
+        <property name="child.x" value="99999" />
+    </bean>
+
+
+    <bean class="cn.yionr.beans.StaticUserFactory" id="factory" factory-method="getInstance">
+        <constructor-arg name="name" value="lp"/>
+        <constructor-arg name="age" value="20" />
+    </bean>
+
+    <bean class="cn.yionr.beans.InstanceUserFactory" id="factory2" />
+    <bean class="cn.yionr.beans.User" id="user" factory-bean="factory2" factory-method="getInstance" >
+        <constructor-arg name="name" value="ww" />
+        <constructor-arg name="age" value="18" />
+    </bean>
+
+</beans>
