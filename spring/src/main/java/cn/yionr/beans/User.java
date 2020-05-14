@@ -1,7 +1,13 @@
 package cn.yionr.beans;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class User {
+    @Value("林鹏")
     private String name;
+    @Value("21")
     private int age;
 
     @Override

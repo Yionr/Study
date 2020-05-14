@@ -13,6 +13,7 @@
         <module>springmvc</module>
         <module>mybatis</module>
         <module>zebra</module>
+        <module>Proxy</module>
     </modules>
 
 <dependencies>
