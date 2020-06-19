@@ -2,66 +2,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <context:component-scan base-package="cn.yionr" />
     <context:property-placeholder location="classpath:db.properties" />
 
-    <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
+    <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="c3P0PooledDataSource">
         <property name="driverClass" value="${jdbc.driverClassName}" />
         <property name="jdbcUrl" value="${jdbc.url}" />
         <property name="user" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
     </bean>
 
-    <bean id="bean1" class="cn.yionr.beans.Bean1" autowire="byName">
-        <constructor-arg name="child" ref="child"/>
-    </bean>
-    <bean class="cn.yionr.beans.BeanChild" id="child">
-        <property name="x" value="99" />
-    </bean>
-    <bean class="cn.yionr.beans.ComplexBean" id="complexBean" >
-        <property name="bean1s">
-            <list>
-                <bean class="cn.yionr.beans.Bean1"/>
-                <ref bean="bean1" />
-            </list>
-        </property>
-        <property name="map">
-            <map>
-                <entry key="-1" value-ref="bean1" />
-                <entry key="1">
-                    <bean class="cn.yionr.beans.Bean1">
-                        <constructor-arg name="child">
-                            <bean class="cn.yionr.beans.BeanChild"/>
-                        </constructor-arg>
-                    </bean>
-                </entry>
-            </map>
-        </property>
-        <property name="properties">
-            <props>
-                <prop key="userName">root</prop>
-                <prop key="passwd">123456</prop>
-            </props>
-        </property>
-        <property name="arr" value="1,2,3"/>
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <property name="dataSource" ref="c3P0PooledDataSource" />
     </bean>
 
-    <bean class="cn.yionr.beans.Bean1" id="bean12" >
-        <property name="child" ref="child" />
-        <property name="child.x" value="99999" />
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.yionr.dao" />
     </bean>
-
-
-    <bean class="cn.yionr.beans.StaticUserFactory" id="factory" factory-method="getInstance">
-        <constructor-arg name="name" value="lp"/>
-        <constructor-arg name="age" value="20" />
-    </bean>
-
-    <bean class="cn.yionr.beans.InstanceUserFactory" id="factory2" />
-    <bean class="cn.yionr.beans.User" id="user" factory-bean="factory2" factory-method="getInstance" >
-        <constructor-arg name="name" value="ww" />
-        <constructor-arg name="age" value="18" />
-    </bean>
-
 </beans>

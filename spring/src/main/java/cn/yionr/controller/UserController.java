@@ -6,10 +6,5 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class UserController {
-    @Autowired
-    UserService service;
 
-    public void changeUserName(){
-        service.changeUserName();
-    }
 }

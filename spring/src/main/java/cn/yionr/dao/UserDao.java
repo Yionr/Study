@@ -1,14 +1,17 @@
 package cn.yionr.dao;
 
+import cn.yionr.beans.Student;
+import cn.yionr.beans.User;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class UserDao {
-    public void getUser(){
-        System.out.println("正在获取用户");
-    }
+import java.util.List;
 
-    public void saveUser() {
-        System.out.println("正在保存用户");
-    }
+
+public interface UserDao {
+    @Select("select * from student")
+    public List<Student> getStudents();
+
+
+    public void saveUser();
 }

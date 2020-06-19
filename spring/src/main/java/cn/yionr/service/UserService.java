@@ -1,20 +1,20 @@
 package cn.yionr.service;
 
+import cn.yionr.beans.Student;
 import cn.yionr.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import java.util.List;
+
 
 @Service
 public class UserService {
 
-    @Resource(name="userDao")
+    @Autowired
     UserDao dao;
 
-    public void changeUserName(){
-        dao.getUser();
-        dao.saveUser();
+    public List<Student> getStudents(){
+        return dao.getStudents();
     }
 }
