@@ -13,7 +13,6 @@
         <module>springmvc</module>
         <module>mybatis</module>
         <module>proxy</module>
-        <module>mail</module>
         <module>hbase</module>
         <module>hdfs</module>
     </modules>
