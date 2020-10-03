@@ -4,50 +4,34 @@
 
     <meta charset="UTF-8">
     <title>首页</title>
-<!--    <script src="js/jquery-3.5.1.js"></script>-->
-<!--    <script src="js/index.js"></script>-->
 </head>
 <body>
-
-<div id="app1">
-    <ul>
-        <li v-for="items in msg">{{items.text}}</li>
-    </ul>
-    <p>{{tips}}</p>
-    <button v-on:click="aaaaa">click me </button>
-</div>
+<form action="/test" method="get">
+    <input type="text" name="username">
+    <input type="password" name="password">
+</form>
+<button id="btn">submit</button>
 
 
-<div id="app2">
-    <input type="radio" name="name" id="" v-model="name" value="boy" />男
-    <input type="radio" name="name" id="" v-model="name" value="girl" />女
 
-    <p>{{name}}</p>
-</div>
-
-<script src="js/vue.js"></script>
 <script>
-    let lists = [{text: 'hello'},{text: 'hi'},{text: 'how are you'}]
-
-    let app1 = new Vue({
-        el: '#app1',
-        data: {
-            msg: lists,
-            tips: 'this is a tip , and this is another tip!'
-        },
-        methods: {
-            aaaaa: function () {
-                this.tips = this.tips.split("").reverse().join("");
-            }
+    document.addEventListener('visibilitychange', function(){
+        if (document.hidden) {
+            document.title = '快回来吧!'
+        }
+        else{
+            document.title = '欢迎回来!'
         }
     })
 
-    let app2 = new Vue({
-        el: '#app2',
-        data: {
-            name: 'girl'
-        }
-    })
+
+    let btn = document.getElementById('btn');
+    let form = document.forms[0]
+    btn.onclick = function(){
+        // history.pushState(null, '', 'mid.html')
+        form.submit()
+    }
+
 </script>
 
 </body>
