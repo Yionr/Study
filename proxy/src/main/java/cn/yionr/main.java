@@ -13,6 +13,12 @@ public class main {
 //        instance.fun1();
         int[][] arr = {{1,2,3},{4,5,6}};
         System.out.println(UUID.randomUUID().toString());
+
+
+        int i =10;
+        System.out.println(i);
     }
     void s(int... a){}
+
+
 }
